@@ -1,0 +1,138 @@
+GUIDE
+What do you need?
+
+TIMESTAMP: 8:34
+
+    Linux machine
+        Debian based
+        I recommend the latest Ubuntu on Linode -----> https://ntck.co/linodeaff
+    SOL (Solana) *at least $5 worth
+        You can buy SOL through Coinbase ----> https://ntck.co/coinbase
+    Coffee *absolutey required ---> https://NetworkChuck.coffee
+
+
+STEP 1 - Setup your Linux Machine on Linode
+
+TIMESTAMP: 9:51
+
+    Linode ---> https://ntck.co/linodeaff
+
+
+
+STEP 2 - Create a Solana Wallet (from the CLI !!!)
+
+TIMESTAMP: 11:14
+
+    Run this command to install the Solana tools
+
+    sh -c "$(curl -sSfL https://release.solana.com/v1.8.6/install)"
+
+    Exit your terminal and then reconnect
+    Create your Solana wallet
+
+    solana-keygen new
+
+    Check your wallet balance
+
+    solana balance
+
+
+STEP 3 - Purchase Solana and send to your CLI wallet
+
+TIMESTAMP: 13:07
+
+*You can buy SOL through Coinbase ----> https://ntck.co/coinbase
+
+
+STEP 4 - Install some Prereqs
+
+TIMESTAMP: 14:50
+
+    Update your repositories
+
+    sudo apt update
+
+    Install RUST
+
+    curl https://sh.rustup.rs -sSf | sh
+
+    #select option 1 for the default install
+
+    Exit your terminal and reconnect
+    More stuff to install
+
+    sudo apt install libudev-dev -y
+    sudo apt install libssl-dev pkg-config -y
+    sudo apt install build-essential -y
+
+
+STEP 5 - Install the Solana Token Program (CLI tools)
+
+TIMESTAMP: 16:32
+
+    Install the TOOL! (this will take some time)
+
+    cargo install spl-token-cli
+
+
+STEP 6 - Create your token!!
+
+TIMESTAMP: 17:18
+
+    Only one command!
+
+    spl-token create-token
+
+    Create a token account
+
+    spl-token creat-account yourtokenaddress
+
+    Mint (create) some tokens!!
+
+        spl-token mint yourtokenaddress amountyouwanttomint yourtokenaccount
+
+        example: spl-token mint vXV3qR4WifEPiteogi9FDQveVthwrvEeRxpjyQdDHwq 500 3PgHtwNjNx4QzL5MfeTGLJkLCVwA7sotvm5MVXSyQvfj
+
+    Check your token account balance
+
+    spl-token accounts
+
+    ***OPTIONAL*** Disable minting to limit your supply
+
+    spl-token authorize yourtokenaddress mint --disable
+
+STEP 7 - Transfer your token to another wallet
+
+TIMESTAMP: 20:44
+
+    Setup another wallet (phantom wallet) ---> https://phantom.app/
+    Transfer tokens to your new wallet
+
+        spl-token transfer --fund-recipient --allow-unfunded-recipient yourtokenaddress amount recipientwalletaddress
+
+        example: spl-token transfer --fund-recipient --allow-unfunded-recipient vXV3qR4WifEPiteogi9FDQveVthwrvEeRxpjyQdDHwq 10000 6Cc2MFmjjyXyenyEcKoBSq1Rdyw9t65yjXXBQWn34oLY
+
+
+STEP 8 - Add Your Token to the Solana Registry
+
+TIMESTAMP: 25:30
+
+
+    Create your logo (keep it under 200kb and around 300x300px)
+    Sign-up for a GitHub account (if you don't already have one)
+        https://github.com
+    For the Solana Labs Token List repository
+        https://github.com/solana-labs/token-list
+    Use the "." key to enter the web VScode editor
+    Create a folder in assets/mainnet with your token address as the name of your folder
+    Upload your logo to this folder
+    Add your token to the file src/tokens/solana.tokenlist.json
+    Commit your change
+    Merge with the Solana labs token list repository
+
+
+Buy NetworkChuck Coin
+
+TIMESTAMP: 36:15
+
+Link: https://ntck.co/mint
